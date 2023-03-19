@@ -1,0 +1,84 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+//Texto boletos
+.boletos
+{
+    padding: 5rem 0;
+    h3
+    {
+        text-align: center;
+        color: v.$blanco;
+        margin-bottom: 2rem
+    }
+
+    //Mostrar en 2 columnas
+    .contenedor-boletos
+    {
+        @include m.tablet
+        {
+            @include m.grid(2, 5rem);
+        }
+    }
+}
+
+.pase
+{
+    //Texto de pase
+    .nombre-pase
+    {
+        text-align: center;
+        font-size: 2.4rem;
+        color:v.$blanco;
+    }
+    //"&" agrega clase padre (.pase)
+    &-header,
+    &-footer
+    {
+        p
+        {
+            text-align: center;
+            color: v.$blanco;
+            margin: 0;
+        }
+    }
+    //Color de header y fuente
+    &-header
+    {
+        background-color: v.$rosa;
+        p
+        {
+            text-transform: uppercase;
+            font-size: 1.6rem;
+        }
+    }
+    //Color de body
+    &-body
+    {
+        background-color: v.$blanco;
+        //Resetear lista a valores básicos
+        ul
+        {
+            //Por cada li, fondo blanco, padding y borde inferior
+            @include m.resetear-lista;
+            li,
+            :nth-child(odd)
+            {
+                background-color: v.$blanco;
+                padding: 1rem;
+                //Tamaño de borde, estilo y color
+                border-bottom: 1px solid #e1e1e1;
+            }
+        }
+    }
+    //Color y fuente de footer
+    &-footer
+    {
+        background-color: v.$morado;
+        p
+        {
+            font-size: 2.4rem;
+            font-weight: 700;
+        }
+    }
+}
